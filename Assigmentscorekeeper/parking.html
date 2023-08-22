@@ -16,7 +16,7 @@
     let car = 0;
     let bike = 0;
     let scooty = 0;
-    let bicycle = 0;
+    let bicylce = 0;
 
     function handleIncrease(vehicle) {
       if (vehicle == "car") car++;
@@ -26,7 +26,6 @@
 
       rootElement.render(<App />);
     }
-
     function handleDecrease(vehicle) {
       if (vehicle == "car" && car > 0) car--;
       else if (vehicle == "bike" && bike > 0) bike--;
@@ -36,6 +35,8 @@
       rootElement.render(<App />);
     }
 
+
+
     const App = () => (
       <>
         <p>List of all the vehicles count in the parking.</p>
@@ -43,46 +44,49 @@
           <li>
             <p>
               <b>Car: {car}</b> &emsp;
-              <button onClick={() => handleIncrease("car")}>Increase</button>
+              <button onClick={() =>
+                handleIncrease("car")}>Increase</button>
               &emsp;
-              <button onClick={() => handleDecrease("car")}>Decrease</button>
-            </p>
-          </li>
-          <li>
-            <p>
-              <b>Bike: {bike}</b> &emsp;
-              <button onClick={() => handleIncrease("bike")}>Increase</button>
-              &emsp;
-              <button onClick={() => handleDecrease("bike")}>Decrease</button>
+              <button onClick={() =>
+                handleDecrease("car")}>Decrease</button>
             </p>
           </li>
           <li>
             <p>
               <b>Scooty: {scooty}</b> &emsp;
-              <button onClick={() => handleIncrease("scooty")}>
-                Increase
-              </button>
+              <button onClick={() =>
+                handleIncrease("scooty")}>Increase</button>
               &emsp;
-              <button onClick={() => handleDecrease("scooty")}>
-                Decrease
-              </button>
+              <button onClick={() =>
+                handleDecrease("scooty")}>Decrease</button>
             </p>
           </li>
           <li>
             <p>
-              <b>Bicycle: {bicycle}</b> &emsp;
-              <button onClick={() => handleIncrease("bicycle")}>
-                Increase
-              </button>
+              <b>Bike: {bike}</b> &emsp;
+              <button onClick={() =>
+                handleIncrease("bike")}>Increase</button>
               &emsp;
-              <button onClick={() => handleDecrease("bicycle")}>
-                Decrease
-              </button>
+              <button onClick={() =>
+                handleDecrease("bike")}>Decrease</button>
+            </p>
+          </li>
+          <li>
+            <p>
+              <b>Bicycle: {bicylce}</b> &emsp;
+              <button onClick={() =>
+                handleIncrease("bicycle")}>Increase</button>
+              &emsp;
+              <button onClick={() =>
+                handleDecrease("bicycle")}>Decrease</button>
             </p>
           </li>
         </ol>
       </>
-    );
+    )
+
+
+
 
     const rootElement = ReactDOM.createRoot(document.getElementById("root"));
     rootElement.render(<App />);
