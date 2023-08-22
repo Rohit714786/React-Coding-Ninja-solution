@@ -5,7 +5,10 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
   <title>React App</title>
+
 </head>
 
 <body>
@@ -93,18 +96,16 @@
             min="1"
             required
           />
-          <br />
           <input ref={nameRef} placeholder="Primary Guest Name" required />
-          <br />
           <input
             ref={phoneRef}
             type="tel"
             placeholder="Phone Number"
             required
           />
+
           <br />
-          <br />
-          <button>Add Entry</button>
+          <button style={{ margin: '0 auto' }}>Add Entry</button>
         </form>
 
         <br />
