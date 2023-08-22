@@ -8,6 +8,8 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+
 </head>
 
 <body>
@@ -16,20 +18,15 @@
     let score = 0;
     let wicket = 0;
     let ballWiseRes = [];
+    let hit = 0;
+    let inputRef = React.createRef();
     function addScore(num) {
-      if (wicket < 10) {
-        ballWiseRes.push(num);
-        score += num;
-      }
+      hit = num;
       rootElement.render(<App />)
     }
     function addWicket() {
-      if (wicket < 10) {
-        ballWiseRes.push("W");
-        wicket += 1;
-      }
+      hit = "W"
       rootElement.render(<App />)
-
     }
     const ScoreButton = () => (
       <div>
@@ -43,27 +40,36 @@
         <button onClick={addWicket}>Wicket</button>
       </div>
     )
-    const Result = () => (
-      <div>
-        {ballWiseRes.map((res, index) => (
-          <>
-            {index % 6 === 0 ? <br /> : null}
-            <span key={index}>
-              {res === 0 ? <strong>.</strong> : res}
-            </span>
-            &nbsp;&nbsp;&nbsp;
-          </>
-        )
-        )}
-      </div>
-    )
+    // const Result = () => (
+    // <div>
+    // {ballWiseRes.map((res, index) => (
+    // <>
+    // {index % 6 === 0 ? <br /> : null}
+    // <span key={index}>
+    // {res === 0 ? <strong>.</strong> : res}
+    // </span>
+    // &nbsp;&nbsp;&nbsp;
+    // </>
+    // )
+    // )}
+    // </div>
+    // )
     function handleSubmit(event) {
       event.preventDefault();
+      hit === "W" ? wicket++ : (score += hit);
+      ballWiseRes.unshift(
+        <span>{`${hit}, ${inputRef.current.value}`}</span>
+        // <span>{hit}{inputRef.current.value}</span>
+      );
+      hit = 0;
+      inputRef.current.value = "";
+      rootElement.render(<App />)
+
     }
     const Form = () => (
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Enter runs" />
-        <input type="text" placeholder="Enter Comments" />
+        <input value={hit} />
+        <input ref={inputRef} placeholder="Enter Comments" />
         <button type="submit">Submit</button>
       </form>
     );
@@ -74,7 +80,11 @@
         <h2>SCORE:{score}/{wicket}</h2>
         <ScoreButton />
         <Form />
-        <Result />
+        <hr />
+
+        {ballWiseRes.map((res, index) => (
+          <p key={index}>{res}</p>
+        ))}
 
       </>
     )
@@ -83,8 +93,6 @@
 
 
   </script>
-
-
 </body>
 
 </html>
