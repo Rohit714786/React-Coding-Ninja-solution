@@ -1,1 +1,1 @@
-# React-Coding-Ninja-solution
+# React-Coding-Ninja-solution of score - keeper - app
